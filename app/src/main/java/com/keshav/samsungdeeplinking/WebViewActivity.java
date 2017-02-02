@@ -79,7 +79,7 @@ public class WebViewActivity extends AppCompatActivity implements JsInterface.Js
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n\t\"app\": {\n\t\t\"id\": \"1460406978213\",\n\t\t\"bundle\": \"com.samsung.commerce\",\n\t\t\"name\": \"SamsungCommerce\",\n\t\t\"storeurl\": \"\",\n\t\t\"cat\": [\"Commerce\"],\n\t\t\"ext\": {\n\t\t\t\"reftag\": \"Commerce\"\n\t\t}\n\t},\n\t\"imp\": {\n\t\t\"banner\": {\n\t\t\t\"w\": 320,\n\t\t\t\"h\": 480,\n\t\t\t\"api\": [1, 2]\n\t\t},\n\t\t\"secure\": 0,\n\t\t\"ext\": {\n\t\t\t\"ads\": 1\n\t\t}\n\t},\n\t\"device\": {\n\t\t\"gpid\": \"305c5dd8-fdfb-4a10-93fa-7170e091b750\",\n\t\t\"ua\": \"Mozilla/5.0 (Linux; Android 5.0; Aqua 4G+ Build/LRX21M) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36\",\n\t\t\"lmt\": 0,\n\t\t\"geo\": {\n\t\t\t\"lat\": 40.7127,\n\t\t\t\"lon\": 74.0059,\n\t\t\t\"accu\": 1.0,\n\t\t\t\"type\": 1\n\t\t}\n\t},\n\t\"ext\": {\n\t\t\"responseformat\": \"jsonmeta\"\n\t}\n}");
+        RequestBody body = RequestBody.create(mediaType, "{\n\t\"app\": {\n\t\t\"id\": \"1460406978213\",\n\t\t\"bundle\": \"com.samsung.commerce\",\n\t\t\"name\": \"SamsungCommerce\",\n\t\t\"storeurl\": \"\",\n\t\t\"cat\": [\"Commerce\"],\n\t\t\"ext\": {\n\t\t\t\"reftag\": \"Commerce\"\n\t\t}\n\t},\n\t\"imp\": {\n\t\t\"banner\": {\n\t\t\t\"w\": 320,\n\t\t\t\"h\": 480,\n\t\t\t\"api\": [1, 2]\n\t\t},\n\t\t\"secure\": 0,\n\t\t\"ext\": {\n\t\t\t\"ads\": 1\n\t\t}\n\t},\n\t\"device\": {\n\t\t\"gpid\": \"899e58d1-f713-4754-926d-81b4d83f71c3\",\n\t\t\"ua\": \"Mozilla/5.0 (Linux; Android 5.0; Aqua 4G+ Build/LRX21M) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36\",\n\t\t\"lmt\": 0,\n\t\t\"geo\": {\n\t\t\t\"lat\": 40.7127,\n\t\t\t\"lon\": 74.0059,\n\t\t\t\"accu\": 1.0,\n\t\t\t\"type\": 1\n\t\t}\n\t},\n\t\"ext\": {\n\t\t\"responseformat\": \"jsonmeta\"\n\t}\n}");
         Request request = new Request.Builder()
                 .url("https://c2s.w.inmobi.com/showad/v3.1")
                 .post(body)
@@ -132,8 +132,11 @@ public class WebViewActivity extends AppCompatActivity implements JsInterface.Js
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        //webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
-                                        webView.loadUrl("http://inmobiads.com/tizen.html");
+
+                                        // webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
+                                        webView.loadUrl("http://192.168.43.109/tizen/adtag.html");
+
+
                                     }
                                 });
                             }
@@ -156,7 +159,7 @@ public class WebViewActivity extends AppCompatActivity implements JsInterface.Js
         handler.post(new Runnable() {
             @Override
             public void run() {
-                webView.evaluateJavascript("try{broadcastEvent('openExternalSuccessful',\"" + url + "\");}catch(e){}", null);
+                webView.evaluateJavascript("try{broadcastEvent('galaxyOpenExternalSuccessful',\"" + url + "\");}catch(e){}", null);
                 // test if the script was loaded
                 webView.evaluateJavascript("JsInjected()", null);
             }
